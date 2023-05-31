@@ -11,7 +11,8 @@ defmodule Pubsubserver.Application do
       # Starts a worker by calling: Pubsubserver.Worker.start_link(arg)
       # {Pubsubserver.Worker, arg}
       {ThousandIsland, port: 1234, handler_module: Pubsubserver.Handler},
-      {Registry, keys: :duplicate, name: Pubsubserver.Registry}
+      {Registry, keys: :duplicate, name: Pubsubserver.Registry},
+      {TestWorker, [word: "Elixirさいこーーーi！"]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

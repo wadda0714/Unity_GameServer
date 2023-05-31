@@ -7,6 +7,8 @@ defmodule Pubsubserver.Handler do
 
   @impl ThousandIsland.Handler
   def handle_connection(socket, state) do
+    # 接続して来たホストのIPを表示する
+    IO.puts("New connection established ")
     Registry.register(Pubsubserver.Registry, "clients", socket)
     {:continue, state}
   end
@@ -26,6 +28,8 @@ defmodule Pubsubserver.Handler do
     |> Enum.each(fn {_pid, socket} ->
       ThousandIsland.Socket.send(socket, msg)
     end)
+
+    IO.puts("sended message " <> msg)
 
     {:noreply, {socket, state}}
   end
